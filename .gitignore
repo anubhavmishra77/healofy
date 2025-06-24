@@ -43,3 +43,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wmv
+*.m4v
+*.webm
+
+# Large assets (keep small demo assets only)
+assets/videos/
+*.zip
+*.tar.gz
