@@ -3,13 +3,13 @@ import 'package:http/http.dart' as http;
 import '../models/api_response.dart';
 
 class ApiService {
-  static const String baseUrl = 'https://afsarhealofy.github.io/flutterapitest';
+  static const String baseUrl = 'https:
   static const String apiEndpoint = '$baseUrl/flutterapitest.json';
   static const Duration timeoutDuration = Duration(seconds: 30);
   static const int maxRetries = 3;
 
-  /// Fetches app data from the remote API endpoint
-  /// Returns ApiResponse on success, null on failure
+  
+  
   static Future<ApiResponse?> fetchAppData() async {
     for (int attempt = 1; attempt <= maxRetries; attempt++) {
       try {
@@ -43,7 +43,7 @@ class ApiService {
     return null;
   }
 
-  /// Validates if the API endpoint is reachable
+  
   static Future<bool> isApiReachable() async {
     try {
       final response = await http
@@ -55,6 +55,6 @@ class ApiService {
     }
   }
 
-  /// Gets the current API endpoint being used
+  
   static String getCurrentApiEndpoint() => apiEndpoint;
 }

@@ -22,7 +22,6 @@ class HomeController extends GetxController {
       isLoading.value = true;
       error.value = '';
 
-      // Check API reachability first
       final isReachable = await ApiService.isApiReachable();
       isOnline.value = isReachable;
 
@@ -50,12 +49,10 @@ class HomeController extends GetxController {
     await fetchData();
   }
 
-  /// Check if we have video reviews content
   bool get hasVideoReviews {
     return contents.any((item) => item.type == 'VIDEO_REVIEWS');
   }
 
-  /// Get API connection status
   String get connectionStatus {
     if (isLoading.value) return 'Connecting to API...';
     if (!isOnline.value) return 'API Offline';
