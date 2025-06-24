@@ -14,8 +14,6 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    print('🚀 Healofy Controller initialized');
-    print('🌐 Using API: ${ApiService.getCurrentApiEndpoint()}');
     fetchData();
   }
 
@@ -24,8 +22,6 @@ class HomeController extends GetxController {
       isLoading.value = true;
       error.value = '';
 
-      print('📡 Fetching data from remote API...');
-
       // Check API reachability first
       final isReachable = await ApiService.isApiReachable();
       isOnline.value = isReachable;
@@ -33,7 +29,6 @@ class HomeController extends GetxController {
       if (!isReachable) {
         error.value =
             'Unable to reach API server. Please check your internet connection.';
-        print('🔴 API server unreachable');
         return;
       }
 
@@ -41,27 +36,17 @@ class HomeController extends GetxController {
 
       if (response != null) {
         apiResponse.value = response;
-        print('✅ Data fetched successfully from API');
-        print('📊 Loaded ${contents.length} content items');
-        print('🎨 Theme loaded: ${theme?.title}');
-
-        // Log content types for debugging
-        final contentTypes = contents.map((c) => c.type).toSet();
-        print('📋 Content types: ${contentTypes.join(', ')}');
       } else {
         error.value = 'Failed to load data from API server';
-        print('❌ API returned no data');
       }
     } catch (e) {
       error.value = 'Network error: $e';
-      print('💥 Controller error: $e');
     } finally {
       isLoading.value = false;
     }
   }
 
   Future<void> refreshData() async {
-    print('🔄 Refreshing data from API...');
     await fetchData();
   }
 
